@@ -1,0 +1,20 @@
+stages:
+    - npm 
+    - sonar
+    - trivy file
+    - docker
+    - trivy image
+    - run container
+
+Install dependency:
+    stage: npm
+…        - trivy image danishbuksh22/youtubev1:latest
+
+Docker container run:
+    stage: run container
+    tags:
+        - youtube
+    script:
+        docke run -d --name youtube -p 3000:3000 danishbuksh22/youtubev1:latest     
+
+
